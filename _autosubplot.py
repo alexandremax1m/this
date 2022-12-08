@@ -19,10 +19,3 @@ for i in index:
 	del plotax,plotyx,axp,yxp,axx,yxx
 
 plt.show()
-
-
-
-
-	
-
-
