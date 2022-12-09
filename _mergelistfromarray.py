@@ -29,9 +29,9 @@ def _mergelistsfromarray(n):
 		mylist3.append(merge(mylist2))
 	
 	print(f"{datetime.now()-now}")
-	print(f"{(n**2)} integers stored in mylist1")
-	print(f"{(n**3)} integers stored in mylist2")
-	print(f"{(n**4)} integers stored in mylist3")
+	print(f"{(n**2)} integers stored in 1 list in mylist1")
+	print(f"{(n**3)} integers stored in 1 list in mylist2")
+	print(f"{(n**4)} integers stored in 1 list in mylist3")
 
 if __name__ != "__main__":
 	
