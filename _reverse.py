@@ -59,7 +59,7 @@ def this():
 		open(f"{x[0:5]}.txt","a+").write(b.stdout)
 		open(f"{x[0:5]}.txt","a+").close()
 				
-	textfiles = [x for x in os.listdir() if x.endswith('.txt')
+	textfiles = [x for x in os.listdir() if x.endswith('.txt')]
 	for x in textfiles():
 		a = [re.findall(find_xor,line) for line in open(f"{x}","r",encoding='UTF-8')]
 		b = [re.findall(find_push,line) for line in open(f"{x}","r",encoding='UTF-8')]
