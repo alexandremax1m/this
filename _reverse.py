@@ -53,11 +53,12 @@ def this():
 	for x in os.listdir():
 		if x.endswith('.o'):
 			a = subprocess.run(["objdump","-D",f"{x}"],text=True, capture_output=True)
-			with open(f"{x[0:5]}.txt","a+") as file_fu:
-				file_fu.write(a.stdout)
+			open(f"{x[0:5]}.txt","a+").write(a.stdout)
+			open(f"{x[0:5]}.txt","a+").close()
 			b = subprocess.run(["objdump","-a",f"{x}"],text=True, capture_output = True)
-			with open(f"{x[0:5]}.txt","a+") as file_fu:
-				file_fu.write(b.stdout)
+			open(f"{x[0:5]}.txt","a+").write(b.stdout)
+			open(f"{x[0:5]}.txt","a+").close()
+				
 
 	for x in os.listdir():
 		if x.endswith('.txt'):
