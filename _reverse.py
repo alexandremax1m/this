@@ -49,28 +49,27 @@ find_register7 = re.compile(r".{0,200}esp.{0,100}")
 find_register8 = re.compile(r".{0,200}ebp.{0,100}")
 
 def this():
-
-	for x in os.listdir():
-		if x.endswith('.o'):
-			a = subprocess.run(["objdump","-D",f"{x}"],text=True, capture_output=True)
-			open(f"{x[0:5]}.txt","a+").write(a.stdout)
-			open(f"{x[0:5]}.txt","a+").close()
-			b = subprocess.run(["objdump","-a",f"{x}"],text=True, capture_output = True)
-			open(f"{x[0:5]}.txt","a+").write(b.stdout)
-			open(f"{x[0:5]}.txt","a+").close()
+	
+	files = [x for x in os.listdir() if x.endswith('.o')]
+	for x in files():
+		a = subprocess.run(["objdump","-D",f"{x}"],text=True, capture_output=True)
+		open(f"{x[0:5]}.txt","a+").write(a.stdout)
+		open(f"{x[0:5]}.txt","a+").close()
+		b = subprocess.run(["objdump","-a",f"{x}"],text=True, capture_output = True)
+		open(f"{x[0:5]}.txt","a+").write(b.stdout)
+		open(f"{x[0:5]}.txt","a+").close()
 				
-
-	for x in os.listdir():
-		if x.endswith('.txt'):
-			a = [re.findall(find_xor,line) for line in open(f"{x}","r",encoding='UTF-8')]
-			b = [re.findall(find_push,line) for line in open(f"{x}","r",encoding='UTF-8')]
-			c = [re.findall(find_add,line) for line in open(f"{x}","r",encoding='UTF-8')]
-			d = [re.findall(find_mov,line) for line in open(f"{x}","r",encoding='UTF-8')]
-			aa = [x for x in a if x]
-			bb = [x for x in b if x]
-			cc = [x for x in c if x]
-			dd = [x for x in d if x]
-			print(aa,bb,cc,dd)
+	textfiles = [x for x in os.listdir() if x.endswith('.txt')
+	for x in textfiles():
+		a = [re.findall(find_xor,line) for line in open(f"{x}","r",encoding='UTF-8')]
+		b = [re.findall(find_push,line) for line in open(f"{x}","r",encoding='UTF-8')]
+		c = [re.findall(find_add,line) for line in open(f"{x}","r",encoding='UTF-8')]
+		d = [re.findall(find_mov,line) for line in open(f"{x}","r",encoding='UTF-8')]
+		aa = [x for x in a if x]
+		bb = [x for x in b if x]
+		cc = [x for x in c if x]
+		dd = [x for x in d if x]
+		print(aa,bb,cc,dd)
 
 
 if __name__ != "__main__":
