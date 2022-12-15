@@ -27,7 +27,6 @@ class HTMLFile:
 		h, hh = f"<h1>",f"</h1>"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{h}{header}{hh}\n")
 		open(f"{self.filename}",'a+',encoding='UTF-8').close()
-        ### take r'' as argument
 	def writep(self,ppp):
 		p, pp = f"<p>",f"</p>"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{p}{ppp}{pp}\n")
@@ -36,6 +35,7 @@ class HTMLFile:
 		a, aa, linkk, look = f"<a",f"</a>",f"'{link}'",f"{look}"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{a} href={link}>{look}{aa}\n")
 		open(f"{self.filename}",'a+',encoding='UTF-8').close()
+		### take r'' as argument
 	def addimg(self,img,altt,w,h):
 		i,ii,iii,iiii,iiiii = f"<img ",f"src={img} ",f"alt={altt} ",f"width={w} ",f"height={h}>"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{i}{ii}{iii}{iiii}{iiiii}\n")
