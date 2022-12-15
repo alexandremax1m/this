@@ -1,6 +1,9 @@
 from os import getcwd
 from pathlib import Path
 
+from os import getcwd
+from pathlib import Path
+
 class HTMLFile:
 	__slots__ = "filename","cssfilename"
 	def __init__(self,filename):
@@ -24,13 +27,14 @@ class HTMLFile:
 		h, hh = f"<h1>",f"</h1>"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{h}{header}{hh}\n")
 		open(f"{self.filename}",'a+',encoding='UTF-8').close()
+        ### take r'' as argument
 	def writep(self,ppp):
 		p, pp = f"<p>",f"</p>"
 		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{p}{ppp}{pp}\n")
 		open(f"{self.filename}",'a+',encoding='UTF-8').close()
 	def writeahr(self,link,look):
 		a, aa, linkk, look = f"<a",f"</a>",f"'{link}'",f"{look}"
-		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{a} href={linkk}>{look}{aa}\n")
+		open(f"{self.filename}",'a+',encoding='UTF-8').write(f"{a} href={link}>{look}{aa}\n")
 		open(f"{self.filename}",'a+',encoding='UTF-8').close()
 	def addimg(self,img,altt,w,h):
 		i,ii,iii,iiii,iiiii = f"<img ",f"src={img} ",f"alt={altt} ",f"width={w} ",f"height={h}>"
