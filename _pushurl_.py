@@ -45,24 +45,3 @@ class HTMLFile:
 		open(f"{self.cssfilename}",'a+',encoding='UTF-8').close()
 	def cssedit(self,tagged):
 		pass
-
-class Website:
-	__slots__ = "webpages","style","database"
-	def __init__(self,webpages):
-		self.webpages = webpages
-		if not type(self.webpages) == list:
-			self.webpages = []
-			if type(webpages) == str:
-				self.webpages.append(webpages)
-			elif type(webpages) == tuple or type(webpages) == list:
-				self.webpages = list(webpages)
-		a = [x for x in Path(getcwd()).iterdir()]
-		b = [str(c) for c in a if str(c).endswith(tuple([f"{x}" for x in self.webpages]))]
-		if not b:
-			for x in self.webpages:
-				open(f"{x}",'a+',encoding='UTF-8').close()
-		del a,b
-	def addfile(self,filename):
-		open(f"{filename}",'a+',encoding = 'UTF-8').close()
-	def editfile(self,filename):
-		pass		
