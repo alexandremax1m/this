@@ -43,12 +43,12 @@ class URL:
 		print(requests.get(f"http://{self.url}").headers)	
 	def portscan(self,sequences):
 		toscan = []
-		for x in range(int(sequences('How Many Port Sequences To Create :: '))):
+		for x in range(int(sequences)):
 			toscan.append([])
 			if not toscan[x]:
 				toscan[x] = [x for x in range(int(input('Start Port :: ')),int(input('End Port :: ')))]
 			for x in toscan[x]:
-				if socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex((f"{self.toip()}",x)) == 0:
+				if socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex((f"{self.ip}",x)) == 0:
 					if not type(self.ports) == list:
 						self.ports = list(self.ports)
 						self.ports.append(x)
