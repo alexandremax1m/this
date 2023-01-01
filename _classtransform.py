@@ -25,7 +25,7 @@ class File:
 class URL:
 	__slots__ = "url","ip","ports"
 	def __init__(self,url):
-		if not get(f"http://{url}").ok == True:
+		if not requests.get(f"http://{url}").ok == True:
 			self.url != url
 			print('The URL May Not Exist :: ')
 		else:
@@ -36,9 +36,9 @@ class URL:
 		for x in requests.get(f"http://{self.url}").history:
 			print(x.headers)
 	def reversepointer(self):
-		IPv4Address(socket.gethostbyname(f"{self.url}").reverse_pointer)
+		IPv4Address(socket.gethostbyname(f"{self.url}")).reverse_pointer
 	def ipinfo(self):
-		print(get(f"https://ipinfo.io/{self.url}/json").text)
+		print(requests.get(f"https://ipinfo.io/{self.url}/json").text)
 	def httpgetheaders(self):
 		print(requests.get(f"http://{self.url}").headers)	
 	def portscan(self,sequences):
@@ -56,4 +56,4 @@ class URL:
 				else:
 					pass		
 	def urlquery(self,query):
-		return get(f"{cls.url}{query}").status_code
+		return requests.get(f"{cls.url}{query}").status_code
