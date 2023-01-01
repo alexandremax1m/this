@@ -36,9 +36,9 @@ class URL:
 		for x in requests.get(f"http://{self.url}").history:
 			print(x.headers)
 	def reversepointer(self):
-		IPv4Address(socket.gethostbyname(f"{self.url}")).reverse_pointer
+		IPv4Address(socket.gethostbyname(f"{self.ip}")).reverse_pointer
 	def ipinfo(self):
-		print(requests.get(f"https://ipinfo.io/{self.url}/json").text)
+		print(requests.get(f"https://ipinfo.io/{self.ip}/json").text)
 	def httpgetheaders(self):
 		print(requests.get(f"http://{self.url}").headers)	
 	def portscan(self,sequences):
