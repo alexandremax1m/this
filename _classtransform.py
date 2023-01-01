@@ -10,9 +10,8 @@ from pathlib import Path
 
 from os import getcwd
 
-import requests,sockets
+import requests,socket
 from requests import Response
-from telnetlib import telnet
 from ipaddress import IPv4Address
 
 class File:
@@ -26,7 +25,7 @@ class File:
 class URL:
 	__slots__ = "url","ip","ports"
 	def __init__(self,url):
-		if not get(f"http://{url}).ok == True:
+		if not get(f"http://{url}").ok == True:
 			self.url != url
 			print('The URL May Not Exist :: ')
 		else:
@@ -37,7 +36,7 @@ class URL:
 		for x in requests.get(f"http://{self.url}").history:
 			print(x.headers)
 	def reversepointer(self):
-		IPv4Address(socket.gethostbyname(f"{self.url}").reverse_pointer
+		IPv4Address(socket.gethostbyname(f"{self.url}").reverse_pointer)
 	def ipinfo(self):
 		print(get(f"https://ipinfo.io/{self.url}/json").text)
 	def httpgetheaders(self):
@@ -47,7 +46,7 @@ class URL:
 		for x in range(int(sequences('How Many Port Sequences To Create :: '))):
 			toscan.append([])
 			if not toscan[x]:
-				toscan[x] = [x for x in range(int(input('Start Port :: '))),int(input('End Port :: ')))]
+				toscan[x] = [x for x in range(int(input('Start Port :: ')),int(input('End Port :: ')))]
 			for x in toscan[x]:
 				if socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect_ex((f"{self.toip()}",x)) == 0:
 					if not type(self.ports) == list:
@@ -58,13 +57,3 @@ class URL:
 					pass		
 	def urlquery(self,query):
 		return get(f"{cls.url}{query}").status_code
-				
-##practical transformation process
-##using __slots__ instead of : name: str, this: that, for faster performance because it does not save those key values in a dict
-
-
-
-
-
-
-
