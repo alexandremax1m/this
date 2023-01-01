@@ -56,4 +56,4 @@ class URL:
 				else:
 					pass		
 	def urlquery(self,query):
-		return requests.get(f"{cls.url}{query}").status_code
+		return requests.get(f"http://{self.url}/{query}").status_code
