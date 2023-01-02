@@ -4,8 +4,6 @@ from psutil import Popen as cmd
 from psutil import AccessDenied as PSAD
 from psutil import process_iter
 
-from multiprocessing import Process as mpprocess
-
 from pathlib import Path
 
 from os import getcwd
@@ -22,6 +20,7 @@ class File:
 		print(open(f"{self.filename}",'r',encoding='UTF-8').read())
 	def readbytes(self):
 		print(open(f"{self.filename}",'rb').read())
+
 class URL:
 	__slots__ = "url","ip","ports"
 	def __init__(self,url):
@@ -36,7 +35,7 @@ class URL:
 		for x in requests.get(f"http://{self.url}").history:
 			print(x.headers)
 	def reversepointer(self):
-		IPv4Address(socket.gethostbyname(f"{self.ip}")).reverse_pointer
+		return IPv4Address(socket.gethostbyname(f"{self.ip}")).reverse_pointer
 	def ipinfo(self):
 		print(requests.get(f"https://ipinfo.io/{self.ip}/json").text)
 	def httpgetheaders(self):
